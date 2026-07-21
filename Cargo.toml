@@ -1,0 +1,21 @@
+[package]
+name = "keiko"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+ratatui = "0.30.2"
+anyhow = "1.0.103"
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.150"
+rand = "0.10.2"
+tachyonfx = "0.25.1"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true
+
+[lints.clippy]
+pedantic = "warn"
