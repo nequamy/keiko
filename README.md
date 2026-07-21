@@ -1,6 +1,7 @@
 # KEIKO
 a simple sorting algorithm visualizer in the terminal
-![img](./assets/demo.gif)
+
+![img](./assets/keiko_preview.gif)
 
 Keiko, which means "practice, training" in Japanese, is a project for learning and honing my own skills. Building a TUI is new to me, and I started learning Rust about six months ago, spending most of that time on a project that uses network communication and on my thesis project.
 
