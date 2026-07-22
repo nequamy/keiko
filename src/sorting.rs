@@ -109,3 +109,53 @@ where
 
     trace
 }
+
+pub fn quick_sort<T>(array: &[T]) -> Vec<SortingStep>
+where
+    T: PartialOrd + Clone,
+{
+    let mut trace = Vec::new();
+    let mut vec = array.to_vec();
+
+    trace
+}
+
+pub fn insertion_sort<T>(array: &[T]) -> Vec<SortingStep>
+where
+    T: PartialOrd + Clone,
+{
+    let mut trace = Vec::new();
+    let mut vec = array.to_vec();
+
+    trace
+}
+
+pub fn selection_sort<T>(array: &[T]) -> Vec<SortingStep>
+where
+    T: PartialOrd + Clone,
+{
+    let mut trace = Vec::new();
+    let mut vec = array.to_vec();
+
+    trace
+}
+
+pub fn heap_sort<T>(array: &[T]) -> Vec<SortingStep>
+where
+    T: PartialOrd + Clone,
+{
+    let mut trace = Vec::new();
+    let mut vec = array.to_vec();
+
+    trace
+}
+
+pub fn merge_sort<T>(array: &[T]) -> Vec<SortingStep>
+where
+    T: PartialOrd + Clone,
+{
+    let mut trace = Vec::new();
+    let mut vec = array.to_vec();
+
+    trace
+}
