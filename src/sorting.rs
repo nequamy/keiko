@@ -206,6 +206,17 @@ mod tests {
     }
 
     #[test]
+    #[ignore = "This is benchmark of bubble sort"]
+    fn bench_bubble_sort() {
+        let now = Instant::now();
+        let vec = build_vec(10_000, 0, 65000);
+
+        bubble_sort(vec.as_slice());
+
+        println!("Bubble sort bench: {:?}, n = {}", now.elapsed(), 10_000);
+    }
+
+    #[test]
     fn test_quick_sort() {
         let vec = build_vec(30, 0, 100);
         assert_sort_correction(vec.as_slice(), quick_sort);
