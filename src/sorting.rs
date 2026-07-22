@@ -159,3 +159,79 @@ where
 
     trace
 }
+
+#[cfg(test)]
+mod tests {
+    use std::time::Instant;
+
+    use super::*;
+
+    fn build_vec(n: usize, min: u16, max: u16) -> Vec<u16> {
+        (0..n).map(|_| rand::random_range(min..max)).collect()
+    }
+
+    fn apply_steps<T: Clone>(initial: &[T], steps: &Vec<SortingStep>) -> Vec<T> {
+        let mut result = initial.to_vec();
+        for step in steps {
+            match step {
+                SortingStep::Swap(i, j) => {
+                    assert!(*i < result.len() && *j < result.len());
+                    result.swap(*i, *j);
+                }
+                SortingStep::Compare(i, j) => {
+                    assert!(*i < result.len() && *j < result.len());
+                }
+            }
+        }
+
+        result
+    }
+
+    fn assert_sort_correction<T: Ord + Clone + std::fmt::Debug>(
+        initial: &[T],
+        method: impl Fn(&[T]) -> Vec<SortingStep>,
+    ) {
+        let steps = method(initial);
+        let mut expected = initial.to_vec();
+        expected.sort();
+
+        let actual = apply_steps(initial, &steps);
+        assert_eq!(actual, expected);
+    }
+
+    #[test]
+    fn test_bubble_sort() {
+        let vec = build_vec(30, 0, 100);
+        assert_sort_correction(vec.as_slice(), bubble_sort);
+    }
+
+    #[test]
+    fn test_quick_sort() {
+        let vec = build_vec(30, 0, 100);
+        assert_sort_correction(vec.as_slice(), quick_sort);
+    }
+
+    #[test]
+    fn test_insertion_sort() {
+        let vec = build_vec(30, 0, 100);
+        assert_sort_correction(vec.as_slice(), insertion_sort);
+    }
+
+    #[test]
+    fn test_selection_sort() {
+        let vec = build_vec(30, 0, 100);
+        assert_sort_correction(vec.as_slice(), selection_sort);
+    }
+
+    #[test]
+    fn test_heap_sort() {
+        let vec = build_vec(30, 0, 100);
+        assert_sort_correction(vec.as_slice(), heap_sort);
+    }
+
+    #[test]
+    fn test_merge_sort() {
+        let vec = build_vec(30, 0, 100);
+        assert_sort_correction(vec.as_slice(), merge_sort);
+    }
+}
